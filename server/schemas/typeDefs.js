@@ -17,16 +17,20 @@ const typeDefs = gql`
     title: String
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
+    me: User
   }
 
   type Mutation {
-    addProfile(name: String!): Profile
-    addSkill(profileId: ID!, skill: String!): Profile
-    removeProfile(profileId: ID!): Profile
-    removeSkill(profileId: ID!, skill: String!): Profile
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, password: String!, email: String!): Auth
+    saveBook(author: String!, description: String!, bookId: String!, image: String!, image: String!, link: String!, title: String!): User
+    removeBook(bookId: String!): User
   }
 `;
 
